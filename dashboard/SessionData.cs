@@ -24,7 +24,7 @@ namespace Dashboard
         }
 
         ///     Adds a user to the list of users in the session
-        /// <param name="user"> An instance of the UserData class </param>
+        ///  An instance of the UserData class </param>
         public void AddUser(UserData user)
         {
             users.Add(user);
