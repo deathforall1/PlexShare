@@ -8,6 +8,8 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <!--adding the dashboard view to the main window of this application-->
-        <views:DashboardView/>
+
+        <views:DashboardView HorizontalAlignment="Left" Width="790" Loaded="DashboardView_Loaded"/>
+		
     </Grid>
 </Window>

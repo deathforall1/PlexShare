@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace PlexShare
 {
     /// <summary>
@@ -23,6 +24,11 @@ namespace PlexShare
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void DashboardView_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
