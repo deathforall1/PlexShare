@@ -13,7 +13,7 @@ namespace Client.ViewModel
 
         //defining the list of users 
         public List<User> ListOfUsers { get; set; }
-
+        public string TestingVariable { get; set; }
 
         //defining the constructor for the dashboardviewmodel
         public DashBoardViewModel()
@@ -27,6 +27,7 @@ namespace Client.ViewModel
             ListOfUsers.Add(user2);
             ListOfUsers.Add(user3);
             ListOfUsers.Add(user4);
+            TestingVariable= "Hi this is rupesh and i am implementing the dashboard UI for this purpose";
         }
 
         //now we have to bind this to the listview on the view side to be able to show the details

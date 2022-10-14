@@ -9,7 +9,7 @@
     <Grid>
         <!--adding the dashboard view to the main window of this application-->
 
-        <views:DashboardView HorizontalAlignment="Left" Width="790" Loaded="DashboardView_Loaded"/>
+        <views:DashboardView HorizontalAlignment="Left" Width="790"  Loaded="DashboardView_Loaded" />
 		
     </Grid>
 </Window>
