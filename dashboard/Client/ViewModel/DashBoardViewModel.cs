@@ -19,14 +19,16 @@ namespace Client.ViewModel
         public DashBoardViewModel()
         { 
             ListOfUsers = new List<User>();
-            User user1 = new User("User1", true);
-            User user2 = new User("User2", true);
-            User user3 = new User("User3", false);
-            User user4 = new User("User4", false);
+            User user1 = new User("User1", "Presenting");
+            User user2 = new User("User2", "Presenting");
+            User user3 = new User("User3", "Presenting");
+            User user4 = new User("User4", "Not Presenting");
             ListOfUsers.Add(user1);
             ListOfUsers.Add(user2);
             ListOfUsers.Add(user3);
             ListOfUsers.Add(user4);
         }
+
+        //now we have to bind this to the listview on the view side to be able to show the details
     }
 }
