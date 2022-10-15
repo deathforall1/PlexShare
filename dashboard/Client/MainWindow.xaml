@@ -17,7 +17,7 @@
         <Border BorderBrush="Yellow" BorderThickness="2">
             <Grid Grid.Column="0">
                 <Border BorderBrush="red" BorderThickness="2">
-                    <views:DashboardView HorizontalAlignment="Right" Margin="-10, 0, 0, 0"  Loaded="DashboardView_Loaded" />
+                    <views:DashboardView HorizontalAlignment="Left"  Loaded="DashboardView_Loaded" />
                 </Border>
             </Grid>
         </Border>
