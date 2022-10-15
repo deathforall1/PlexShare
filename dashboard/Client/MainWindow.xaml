@@ -8,8 +8,19 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <!--adding the dashboard view to the main window of this application-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <views:DashboardView HorizontalAlignment="Left" Width="790"  Loaded="DashboardView_Loaded" />
-		
+        </Grid>
+        <Border BorderBrush="Yellow" BorderThickness="2">
+            <Grid Grid.Column="0">
+                <Border BorderBrush="red" BorderThickness="2">
+                    <views:DashboardView HorizontalAlignment="Right" Margin="-10, 0, 0, 0"  Loaded="DashboardView_Loaded" />
+                </Border>
+            </Grid>
+        </Border>
+
     </Grid>
 </Window>

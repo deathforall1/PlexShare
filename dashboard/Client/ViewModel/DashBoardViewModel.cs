@@ -19,14 +19,16 @@ namespace Client.ViewModel
         public DashBoardViewModel()
         { 
             ListOfUsers = new List<User>();
-            User user1 = new User("User1", "Presenting");
-            User user2 = new User("User2", "Presenting");
-            User user3 = new User("User3", "Presenting");
-            User user4 = new User("User4", "Not Presenting");
+            User user1 = new User("Rupesh Kumar", "Presenting");
+            User user2 = new User("Shubham Raj", "Presenting");
+            User user3 = new User("Hrishi Raaj", "Presenting");
+            User user4 = new User("Saurabh kumar", "Not Presenting");
+            User user5 = new User("Aditya Agarwal", "Not Presenting");
             ListOfUsers.Add(user1);
             ListOfUsers.Add(user2);
             ListOfUsers.Add(user3);
             ListOfUsers.Add(user4);
+            ListOfUsers.Add(user5);
             //just adding the random comment for testing the tagging of the commit for this purpose 
             TestingVariable= "Hi this is rupesh and i am implementing the dashboard UI for this purpose";
         }
