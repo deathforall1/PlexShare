@@ -27,6 +27,7 @@ namespace Client.ViewModel
             ListOfUsers.Add(user2);
             ListOfUsers.Add(user3);
             ListOfUsers.Add(user4);
+            //just adding the random comment for testing the tagging of the commit for this purpose 
             TestingVariable= "Hi this is rupesh and i am implementing the dashboard UI for this purpose";
         }
 
