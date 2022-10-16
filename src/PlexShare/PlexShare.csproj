@@ -14,4 +14,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dashboard\Client\" />
+    <Folder Include="Dashboard\Server\" />
+    <Folder Include="Dashboard\UI\" />
+  </ItemGroup>
+
 </Project>
