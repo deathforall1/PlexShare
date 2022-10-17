@@ -23,27 +23,7 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <!--<ListView x:Name="Fruits" Grid.Column="0">
-            <TextBlock Text="Chat Summary" FontFamily="Champagne &amp; Limousines" FontSize="16" 
-                                       HorizontalAlignment="Center" VerticalAlignment="Top" />
-        </ListView>-->
-
-        <!--<ListView Margin="10" Name="lvDataBinding" ItemsSource="{Binding ListOfUsers}" Grid.Column="0">
-			<ListView.ItemTemplate>
-				<DataTemplate>
-					<WrapPanel>
-						<TextBlock Text="Name: " />
-						<TextBlock Text="{Binding userName}" FontWeight="Bold" />
-						<TextBlock Text=", " />
-						<TextBlock Text="Age: " />
-						<TextBlock Text="{Binding Age}" FontWeight="Bold" />
-						<TextBlock Text=" (" />
-						<TextBlock Text="{Binding Mail}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
-						<TextBlock Text=")" />
-					</WrapPanel>
-				</DataTemplate>
-			</ListView.ItemTemplate>
-		</ListView>-->
+    
         <Border BorderBrush="Green" BorderThickness="2">
 
             <!--now adding the static list to show the list of users in the column 0 -->
@@ -73,51 +53,26 @@
 
 
         <Grid Grid.Column="1" Background="White">
-            <Border BorderBrush="orange" BorderThickness="2">
-                <!--<lvc:CartesianChart x:Name="usersVsTimeChart" Zoom="X" Pan="X">
-                    <lvc:CartesianChart.Series>
-                        <lvc:LineSeries Title="Users vs Time" Values="{Binding usersCountList}" />
-                    </lvc:CartesianChart.Series>
-                    <lvc:CartesianChart.AxisX>
-                        <lvc:Axis Title="Time" Labels="{Binding timestampList}">
-                            
-                               
-                                    
-                            <lvc:Axis.Separator>
-                                        <lvc:Separator Step="1"/>
-                                    </lvc:Axis.Separator>
-                        </lvc:Axis>
-                    </lvc:CartesianChart.AxisX>
-                    <lvc:CartesianChart.AxisY>
-                        <lvc:Axis Title="Users Count" MinValue="0">
+            <Grid.RowDefinitions>
+                
+                <!--this row is to show the graphs for the usercountvstimestamp, and chatcount vs user--> 
+                <RowDefinition />
+                <!--this row is to show the pie chart of attentive students and non-attentive students--> 
+                <RowDefinition />
+                <!--this row to show the buttons--> 
+                <RowDefinition Height="40"/>
 
-                            <lvc:Axis.Sections>
-                                <lvc:AxisSection Value="3" SectionWidth="10" Label="Good Attendance">
-                                    <lvc:AxisSection.Fill>
-                                        <SolidColorBrush Color="LightGreen" Opacity=".4"></SolidColorBrush>
-                                    </lvc:AxisSection.Fill>
-                                </lvc:AxisSection>
-                                <lvc:AxisSection Value="0" SectionWidth="3" Label="Poor Attendance">
-                                    <lvc:AxisSection.Fill>
-                                        <SolidColorBrush Color="#FF8585" Opacity=".4"></SolidColorBrush>
-                                    </lvc:AxisSection.Fill>
-                                </lvc:AxisSection>
-                            </lvc:Axis.Sections>
-                        </lvc:Axis>
-                    </lvc:CartesianChart.AxisY>
-                </lvc:CartesianChart>-->
-                <!--<d3:Chart BottomTitle="Argument" LeftTitle="Function">
-                    <d31:LineGraph x:Name="linegraph" Description="Simple linegraph" Stroke="Blue" StrokeThickness="3"/>
-                </d3:Chart>-->
-                <!--<lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Left">
-                    <lvc:CartesianChart.AxisX>
-                        <lvc:Axis Title="Salesman" Labels="{Binding Labels}"></lvc:Axis>
-                    </lvc:CartesianChart.AxisX>
-                    <lvc:CartesianChart.AxisY>
-                        <lvc:Axis Title="Sold Apps" LabelFormatter="{Binding Formatter}"></lvc:Axis>
-                    </lvc:CartesianChart.AxisY>
-                </lvc:CartesianChart>-->
-                <syncfusion:SfChart>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <!--<ColumnDefinition />-->
+
+            </Grid.ColumnDefinitions>
+            <!--<Border BorderBrush="orange" BorderThickness="2">-->
+               
+                <syncfusion:SfChart Grid.Column="0" Grid.Row="0">
                     <syncfusion:SfChart.PrimaryAxis>
                         <syncfusion:CategoryAxis Header="Time Stamp" />
                     </syncfusion:SfChart.PrimaryAxis>
@@ -134,21 +89,27 @@
                         </syncfusion:ColumnSeries.AdornmentsInfo>
                     </syncfusion:ColumnSeries>
                 </syncfusion:SfChart>
-                <!--<DVC1:Chart Name="mcChart"  
-                    Width="400" Height="250"  
-                    Background="YellowGreen"  
-                    Foreground="DarkBlue"  
-                    Title="Area Chart"  
-                    LegendTitle="Month Rating" />-->
-
-                <!--<TextBlock Background="White" Text="Hi here i will show the graphs and curves for the telemetry module for the user metry module for the usermetry module for the usermetry module for the usermetry module for the usermetry module for the usermetry module for the usermetry module for the usermetry module for the user"></TextBlock>-->
-            </Border>
+                <syncfusion:SfChart Grid.Column="1" Grid.Row="0">
+                    <syncfusion:SfChart.PrimaryAxis>
+                        <syncfusion:CategoryAxis Header="Time Stamp" />
+                    </syncfusion:SfChart.PrimaryAxis>
+                    <syncfusion:SfChart.SecondaryAxis>
+                        <syncfusion:NumericalAxis Header="User Count"/>
+                    </syncfusion:SfChart.SecondaryAxis>
+                    <syncfusion:SfChart.Legend>
+                        <syncfusion:ChartLegend/>
+                    </syncfusion:SfChart.Legend>
+                    <syncfusion:ColumnSeries  ItemsSource="{Binding userCountVsTimeStamps}" XBindingPath="TimeStamp" YBindingPath="UserCount" ShowTooltip="True" >
+                        <syncfusion:ColumnSeries.AdornmentsInfo>
+                            <syncfusion:ChartAdornmentInfo ShowLabel="True" >
+                            </syncfusion:ChartAdornmentInfo>
+                        </syncfusion:ColumnSeries.AdornmentsInfo>
+                    </syncfusion:ColumnSeries>
+                </syncfusion:SfChart>
+                
+            <!--</Border>-->
         </Grid>
-        <!--<Grid Grid.Column="2" HorizontalAlignment="Right">
-            <Border BorderBrush="purple" BorderThickness="2">
-                <TextBlock Text="Here i will show the statisticsw the statisticsw the statisticsw the statisticsw the statisticsw the statistics" Background="White"/>
-            </Border>
-        </Grid>-->
+       
 
         <!--defining the grid for showing the section for the participant count -->
         <Grid Grid.Column="2" HorizontalAlignment="Right">
@@ -205,6 +166,8 @@
             <!--</Border>-->
             <!--<Border BorderBrush="Black" BorderThickness="2" >-->
             <Grid Grid.Row="1" Width="200">
+               
+                
                 <Border BorderBrush="blue" BorderThickness="2" >
 
                     <Rectangle Height="90" Width="150" Fill="White" RadiusY="10" RadiusX="10" >
