@@ -1,8 +1,20 @@
-﻿using System;
+﻿
+/// This file contains the interface for UX to access Client session manager's methods and fields.
 
-public class IUXServerSessionMnager
+namespace Dashboard.Server.SessionManagement
 {
-	public IUXServerSessionMnager()
-	{
-	}
+    public interface IUXServerSessionManager
+    {
+        /// <summary>
+        ///     Returns the credentials required to
+        ///     Join or start the meeting
+        /// </summary>
+        /// <returns> A MeetingCredentials Object </returns>
+        MeetingCredentials GetPortsAndIPAddress();
+
+        /// <summary>
+        ///     Event to notify the UX Server about the end of the meeting.
+        /// </summary>
+        public event NotifyEndMeet MeetingEnded;
+    }
 }
