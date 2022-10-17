@@ -18,6 +18,7 @@ namespace PlexShare.Dashboard.UI.Views
     /// <summary>
     /// Interaction logic for DashboardView.xaml
     /// Interaction logic for DashboardView.xaml
+    /// Interaction logic for DashboardView.xaml
     /// </summary>
     public partial class DashboardView : UserControl
     {
