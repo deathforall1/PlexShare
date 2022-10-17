@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ViewModels="clr-namespace:PlexShare.Dashboard.UI.ViewModel"
              xmlns:DVC1="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit" xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:syncfusion="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
@@ -71,9 +72,9 @@
         </Border>
 
 
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Background="White">
             <Border BorderBrush="orange" BorderThickness="2">
-                <lvc:CartesianChart x:Name="usersVsTimeChart" Zoom="X" Pan="X">
+                <!--<lvc:CartesianChart x:Name="usersVsTimeChart" Zoom="X" Pan="X">
                     <lvc:CartesianChart.Series>
                         <lvc:LineSeries Title="Users vs Time" Values="{Binding usersCountList}" />
                     </lvc:CartesianChart.Series>
@@ -104,7 +105,7 @@
                             </lvc:Axis.Sections>
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisY>
-                </lvc:CartesianChart>
+                </lvc:CartesianChart>-->
                 <!--<d3:Chart BottomTitle="Argument" LeftTitle="Function">
                     <d31:LineGraph x:Name="linegraph" Description="Simple linegraph" Stroke="Blue" StrokeThickness="3"/>
                 </d3:Chart>-->
@@ -116,6 +117,23 @@
                         <lvc:Axis Title="Sold Apps" LabelFormatter="{Binding Formatter}"></lvc:Axis>
                     </lvc:CartesianChart.AxisY>
                 </lvc:CartesianChart>-->
+                <syncfusion:SfChart>
+                    <syncfusion:SfChart.PrimaryAxis>
+                        <syncfusion:CategoryAxis Header="Time Stamp" />
+                    </syncfusion:SfChart.PrimaryAxis>
+                    <syncfusion:SfChart.SecondaryAxis>
+                        <syncfusion:NumericalAxis Header="User Count"/>
+                    </syncfusion:SfChart.SecondaryAxis>
+                    <syncfusion:SfChart.Legend>
+                        <syncfusion:ChartLegend/>
+                    </syncfusion:SfChart.Legend>
+                    <syncfusion:ColumnSeries  ItemsSource="{Binding userCountVsTimeStamps}" XBindingPath="TimeStamp" YBindingPath="UserCount" ShowTooltip="True" >
+                        <syncfusion:ColumnSeries.AdornmentsInfo>
+                            <syncfusion:ChartAdornmentInfo ShowLabel="True" >
+                            </syncfusion:ChartAdornmentInfo>
+                        </syncfusion:ColumnSeries.AdornmentsInfo>
+                    </syncfusion:ColumnSeries>
+                </syncfusion:SfChart>
                 <!--<DVC1:Chart Name="mcChart"  
                     Width="400" Height="250"  
                     Background="YellowGreen"  

@@ -11,6 +11,7 @@ namespace Client.Models
         //in this we will store the data about the user
         public string userName { get; set; }
         public string status { get; set; }
+       
 
         //defining the constructor for the user 
         public User(string username, string statuss)
@@ -19,4 +20,6 @@ namespace Client.Models
             status = statuss;
         }
     }
+
+
 }
