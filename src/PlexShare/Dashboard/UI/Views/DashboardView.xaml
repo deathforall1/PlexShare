@@ -2,9 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PlexShare.Dashboard.UI.Views" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ViewModels="clr-namespace:PlexShare.Dashboard.UI.ViewModel"
+             xmlns:DVC1="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit" xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
@@ -73,8 +73,57 @@
 
         <Grid Grid.Column="1">
             <Border BorderBrush="orange" BorderThickness="2">
+                <lvc:CartesianChart x:Name="usersVsTimeChart" Zoom="X" Pan="X">
+                    <lvc:CartesianChart.Series>
+                        <lvc:LineSeries Title="Users vs Time" Values="{Binding usersCountList}" />
+                    </lvc:CartesianChart.Series>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Time" Labels="{Binding timestampList}">
+                            
+                               
+                                    
+                            <lvc:Axis.Separator>
+                                        <lvc:Separator Step="1"/>
+                                    </lvc:Axis.Separator>
+                        </lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Users Count" MinValue="0">
 
-                <TextBlock Background="White" Text="Hi here i will show the graphs and curves for the telemetry module for the user metry module for the usermetry module for the usermetry module for the usermetry module for the usermetry module for the usermetry module for the usermetry module for the usermetry module for the user"></TextBlock>
+                            <lvc:Axis.Sections>
+                                <lvc:AxisSection Value="3" SectionWidth="10" Label="Good Attendance">
+                                    <lvc:AxisSection.Fill>
+                                        <SolidColorBrush Color="LightGreen" Opacity=".4"></SolidColorBrush>
+                                    </lvc:AxisSection.Fill>
+                                </lvc:AxisSection>
+                                <lvc:AxisSection Value="0" SectionWidth="3" Label="Poor Attendance">
+                                    <lvc:AxisSection.Fill>
+                                        <SolidColorBrush Color="#FF8585" Opacity=".4"></SolidColorBrush>
+                                    </lvc:AxisSection.Fill>
+                                </lvc:AxisSection>
+                            </lvc:Axis.Sections>
+                        </lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
+                <!--<d3:Chart BottomTitle="Argument" LeftTitle="Function">
+                    <d31:LineGraph x:Name="linegraph" Description="Simple linegraph" Stroke="Blue" StrokeThickness="3"/>
+                </d3:Chart>-->
+                <!--<lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Left">
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Salesman" Labels="{Binding Labels}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Sold Apps" LabelFormatter="{Binding Formatter}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>-->
+                <!--<DVC1:Chart Name="mcChart"  
+                    Width="400" Height="250"  
+                    Background="YellowGreen"  
+                    Foreground="DarkBlue"  
+                    Title="Area Chart"  
+                    LegendTitle="Month Rating" />-->
+
+                <!--<TextBlock Background="White" Text="Hi here i will show the graphs and curves for the telemetry module for the user metry module for the usermetry module for the usermetry module for the usermetry module for the usermetry module for the usermetry module for the usermetry module for the usermetry module for the user"></TextBlock>-->
             </Border>
         </Grid>
         <!--<Grid Grid.Column="2" HorizontalAlignment="Right">

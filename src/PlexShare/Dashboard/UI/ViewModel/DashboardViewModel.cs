@@ -14,6 +14,8 @@ namespace PlexShare.Dashboard.UI.ViewModel
         //defining the list of users 
         public List<User> ListOfUsers { get; set; }
         public string TestingVariable { get; set; }
+        //public List<int> x{ get; set; }
+        //public List<int> y{ get; set; }
 
         //defining the constructor for the dashboardviewmodel
         public DashboardViewModel()
@@ -31,6 +33,19 @@ namespace PlexShare.Dashboard.UI.ViewModel
             ListOfUsers.Add(user5);
             //just adding the random comment for testing the tagging of the commit for this purpose 
             TestingVariable = "Hi this is rupesh and i am implementing the dashboard UI for this purpose";
+            //x.Add(10);
+            //x.Add(20);
+            //x.Add(30);
+            //x.Add(40);
+            //x.Add(50);
+
+            //y.Add(10);
+            //y.Add(20);
+            //y.Add(30);
+            //y.Add(40);
+            //y.Add(50);
+
+            //linegraph.Plot(x, y);
         }
 
     }
