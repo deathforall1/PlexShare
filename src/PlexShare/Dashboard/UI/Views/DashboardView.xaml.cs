@@ -13,9 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PlexShare.Dashboard.UI
+namespace PlexShare.Dashboard.UI.Views
 {
     /// <summary>
+    /// Interaction logic for DashboardView.xaml
+    /// Interaction logic for DashboardView.xaml
     /// Interaction logic for DashboardView.xaml
     /// </summary>
     public partial class DashboardView : UserControl
