@@ -71,7 +71,7 @@
             </Grid.ColumnDefinitions>
             <!--<Border BorderBrush="orange" BorderThickness="2">-->
                
-                <syncfusion:SfChart Grid.Column="0" Grid.Row="0">
+                <syncfusion:SfChart Grid.Column="0" Grid.Row="0" Background="WhiteSmoke">
                     <syncfusion:SfChart.PrimaryAxis>
                         <syncfusion:CategoryAxis Header="Time Stamp" />
                     </syncfusion:SfChart.PrimaryAxis>
@@ -88,7 +88,7 @@
                         </syncfusion:ColumnSeries.AdornmentsInfo>
                     </syncfusion:ColumnSeries>
                 </syncfusion:SfChart>
-                <syncfusion:SfChart Grid.Column="1" Grid.Row="0">
+                <syncfusion:SfChart Grid.Column="1" Grid.Row="0" Background="WhiteSmoke">
                     <syncfusion:SfChart.PrimaryAxis>
                         <syncfusion:CategoryAxis Header="Time Stamp" />
                     </syncfusion:SfChart.PrimaryAxis>
@@ -105,7 +105,7 @@
                         </syncfusion:ColumnSeries.AdornmentsInfo>
                     </syncfusion:ColumnSeries>
                 </syncfusion:SfChart>
-            <Grid Grid.Row="1" Grid.Column="0">
+            <Grid Grid.Row="1" Grid.Column="0" Background="WhiteSmoke">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
@@ -134,7 +134,7 @@
             </Grid>
             
             <!--now adding the different buttons for the user-->
-            <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid Grid.Row="2" Grid.ColumnSpan="2" Background="LightGray">
                 <!--<Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>-->
@@ -144,6 +144,23 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
+                <!--<Border CornerRadius="15" BorderBrush="Black" BorderThickness="20" >-->
+
+                <Button Grid.Column="0" HorizontalAlignment="center" VerticalAlignment="center" Background="#24a0ed" FontWeight="Bold" x:Name="RefreshButton" Height="40" Width="120" Content="Refresh">
+                       
+                </Button>
+                <!--</Border>-->
+                <Button Grid.Column="1" HorizontalAlignment="center" VerticalAlignment="center" Background="#24a0ed" FontWeight="Bold" x:Name="SwitchMode" Height="40" Width="120"   
+                Content="Switch to Lab Mode" >
+                </Button>
+
+                <Button Grid.Column="2" HorizontalAlignment="center" VerticalAlignment="center" Background="#24a0ed" FontWeight="Bold" x:Name="UploadAssignment" Height="40" Width="120"   
+                Content="Upload" >
+                </Button>
+
+                <Button Grid.Column="3" HorizontalAlignment="center" VerticalAlignment="center" Background="Red" FontWeight="Bold" x:Name="LeaveMeeting" Height="40" Width="120"   
+                Content="Leave" >
+                </Button>
                 <!--<TextBlock Grid.Row="0" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Hello this is rupesh kumar and here i will be adding the different buttons for the user to be able to show and refresh the contents for the user for this purpose"></TextBlock>-->
             </Grid>
 
