@@ -55,11 +55,11 @@
             <Grid.RowDefinitions>
                 
                 <!--this row is to show the graphs for the usercountvstimestamp, and chatcount vs user--> 
-                <RowDefinition />
+                <RowDefinition Height="2*"/>
                 <!--this row is to show the pie chart of attentive students and non-attentive students--> 
-                <RowDefinition />
+                <RowDefinition Height="1*"/>
                 <!--this row to show the buttons--> 
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="0.5*"/>
 
             </Grid.RowDefinitions>
 
@@ -117,7 +117,7 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Text="Attentive Users"></TextBlock>
-                    <ProgressBar Grid.Row="1"  Margin="10,10,0,13" Name="PBar1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="30" Value="60" ></ProgressBar>
+                    <ProgressBar Grid.Row="1"  Margin="10,10,0,13" Name="PBar1" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="300" Height="30" Value="{Binding attentiveUsers}" ></ProgressBar>
                 </Grid>
                 <Grid Grid.Row="1">
 
@@ -126,11 +126,25 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Text=" Non Attentive Users"></TextBlock>
-                    <ProgressBar Grid.Row="1"  Margin="10,10,0,13" Name="PBar2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="30" Value="60" ></ProgressBar>
+                    <ProgressBar Grid.Row="1"  Margin="10,10,0,13" Name="PBar2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="30" Foreground="Red" Value="{Binding nonAttentiveUsers}" ></ProgressBar>
                 </Grid>
 
                 <!--<ProgressBar Grid.Row="1" Margin="10,10,0,13" Name="PBar2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="30" Value="60" ></ProgressBar>-->
                 
+            </Grid>
+            
+            <!--now adding the different buttons for the user-->
+            <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                <!--<Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <!--<TextBlock Grid.Row="0" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Hello this is rupesh kumar and here i will be adding the different buttons for the user to be able to show and refresh the contents for the user for this purpose"></TextBlock>-->
             </Grid>
 
 

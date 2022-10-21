@@ -27,6 +27,9 @@ namespace PlexShare.Dashboard.UI.ViewModel
         //public List<double> TimeStamp { get; set; }
         
         public List<UserCountVsTimeStamp> userCountVsTimeStamps { get; set; }
+        public int attentiveUsers { get; set; }
+        public int nonAttentiveUsers { get; set; }
+
         //public ObservableCollection<AttentiveNotAttentive> AttentiveNotAttentiveData { get; set; }
 
 
@@ -61,6 +64,9 @@ namespace PlexShare.Dashboard.UI.ViewModel
                 new UserCountVsTimeStamp { UserCount = 40, TimeStamp = 4.0 }
             };
 
+
+            attentiveUsers = 60;
+            nonAttentiveUsers = 100 - attentiveUsers;
             //AttentiveNotAttentiveData = new ObservableCollection<AttentiveNotAttentive>()
             //{
             //    new AttentiveNotAttentive { field = "Attentive" , numberOfStudents = 10 },
