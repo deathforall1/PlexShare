@@ -3,6 +3,7 @@ using LiveCharts;
 using PlexShare.Dashboard.UI.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,9 @@ namespace PlexShare.Dashboard.UI.ViewModel
         ////defining the list to store the time stamp 
         //public List<double> TimeStamp { get; set; }
         
-        public List<UserCountVsTimeStamp> userCountVsTimeStamps { get; set; }   
+        public List<UserCountVsTimeStamp> userCountVsTimeStamps { get; set; }
+        //public ObservableCollection<AttentiveNotAttentive> AttentiveNotAttentiveData { get; set; }
+
 
         //public List<int> x{ get; set; }
         //public List<int> y{ get; set; }
@@ -57,6 +60,13 @@ namespace PlexShare.Dashboard.UI.ViewModel
                 new UserCountVsTimeStamp { UserCount= 30, TimeStamp = 3.0 },
                 new UserCountVsTimeStamp { UserCount = 40, TimeStamp = 4.0 }
             };
+
+            //AttentiveNotAttentiveData = new ObservableCollection<AttentiveNotAttentive>()
+            //{
+            //    new AttentiveNotAttentive { field = "Attentive" , numberOfStudents = 10 },
+            //    new AttentiveNotAttentive { field = "Non Attentive" , numberOfStudents = 20}
+            //};
+        
             ////allocating the memory for the usercount list and the time stamp list 
             //UsersCounList = new List<int>()
             //{ 
