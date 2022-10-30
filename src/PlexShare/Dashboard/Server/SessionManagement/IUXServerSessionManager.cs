@@ -1,6 +1,5 @@
 ﻿
 /// This file contains the interface for UX to access Client session manager's methods and fields.
-
 namespace Dashboard.Server.SessionManagement
 {
     public interface IUXServerSessionManager
@@ -9,8 +8,7 @@ namespace Dashboard.Server.SessionManagement
         //     Returns the credentials required to
         //     Join or start the meeting
         
-        /// <returns> A MeetingCredentials Object </returns>
-        MeetingCredentials GetPortsAndIPAddress();
+        public MeetingCredentials GetPortsAndIPAddress();
 
         
         ///     Event to notify the UX Server about the end of the meeting.
