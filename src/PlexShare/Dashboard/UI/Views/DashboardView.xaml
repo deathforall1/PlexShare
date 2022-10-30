@@ -161,7 +161,7 @@
                 </Grid.ColumnDefinitions>
                 <!--<Border CornerRadius="15" BorderBrush="Black" BorderThickness="20" >-->
 
-                <Button Grid.Column="0" HorizontalAlignment="center" VerticalAlignment="center" Background="#24a0ed" FontWeight="Bold" x:Name="RefreshButton" Height="40" Width="120" Content="Refresh">
+                <Button Grid.Column="0" HorizontalAlignment="center" VerticalAlignment="center" Background="#24a0ed" FontWeight="Bold" x:Name="RefreshButton" Height="40" Width="120" Content="Refresh" Click="OnRefreshButtonClick" >
 
                 </Button>
                 <!--</Border>-->
@@ -226,7 +226,7 @@
                         </Grid.Effect>
                     </Grid>
                     <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock x:Name="ParticipantsCount" Text="{Binding totalParticipantsCount}" 
+                        <TextBlock x:Name="ParticipantsCount" Text="{Binding TotalParticipantsCount, Mode=OneWay}" 
                                    FontFamily="Champagne &amp; Limousines" Foreground="Black" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <TextBlock Text="Participants Count" 
                                    FontFamily="Champagne &amp; Limousines" FontSize="13" Foreground="Black" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
@@ -313,12 +313,12 @@
                                               RenderingBias="Quality" ShadowDepth="1"/>
                         </Grid.Effect>
                     </Grid>
-                    <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <!--<StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBlock x:Name="SomeRandomCount" Text="200" 
                                    FontFamily="Champagne &amp; Limousines" Foreground="Black" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <TextBlock Text="Participants Count" 
                                    FontFamily="Champagne &amp; Limousines" FontSize="13" Foreground="Black" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
-                    </StackPanel>
+                    </StackPanel>-->
                 </Grid>
             </Grid>
 

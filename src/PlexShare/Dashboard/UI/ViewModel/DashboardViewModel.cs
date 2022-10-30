@@ -14,7 +14,7 @@ using System.Windows.Markup;
 
 namespace PlexShare.Dashboard.UI.ViewModel
 {
-    internal class DashboardViewModel : INotifyPropertyChanged
+    public class DashboardViewModel : INotifyPropertyChanged
     {
         //this is the view mode for the dashboard in this we will be fetaching the details from the models and then storing it in the viewmodel and then we will be binding to the view of the application 
         //ObservableCollection  for storing the list of pariticipants and their status of screensharing
@@ -33,7 +33,7 @@ namespace PlexShare.Dashboard.UI.ViewModel
 
         public int totalMessageCount { get; set; }
 
-        public int totalParticipantsCount { get; set; }
+        private int totalParticipantsCount { get; set; }
 
         public double engagementRate { get; set; }
 
@@ -42,12 +42,12 @@ namespace PlexShare.Dashboard.UI.ViewModel
         /// </summary>
         public int TotalMessageCount
         {
-            get { return totalMessageCount; }
+            get { return this.totalMessageCount; }
             set
             {
-                if (totalMessageCount != value)
+                if (this.totalMessageCount != value)
                 {
-                    totalMessageCount = value;
+                    this.totalMessageCount = value;
                     OnPropertyChanged(nameof(TotalMessageCount));
                 }
             }
@@ -61,7 +61,7 @@ namespace PlexShare.Dashboard.UI.ViewModel
                 if (totalParticipantsCount != value)
                 {
                     totalParticipantsCount = value;
-                    OnPropertyChanged(nameof(TotalParticipantsCount));
+                    OnPropertyChanged("TotalParticipantsCount");
                 }
             }
         }
@@ -123,9 +123,10 @@ namespace PlexShare.Dashboard.UI.ViewModel
             attentiveUsers = 60;
             nonAttentiveUsers = 100 - attentiveUsers;
 
-            totalParticipantsCount = 140;
+            TotalParticipantsCount = 140;
             totalMessageCount = 104;
             engagementRate = 94.2;
+            TotalParticipantsCount = 200;
 
         }
 
@@ -134,10 +135,14 @@ namespace PlexShare.Dashboard.UI.ViewModel
         {
             //we have to fetech the analytics 
             //clientSessionManager.GetAnalytics()
+            //userCountVsTimeStamps.Clear();
             userCountVsTimeStamps.Add(new UserCountVsTimeStamp { UserCount = 50, TimeStamp = 5.0 });
 
+            //userIdVsChatCounts.Clear();
 
             userIdVsChatCounts.Add(new UserIdVsChatCount { userId = 5, chatCount = 16 });
+
+
 
             //once got the sessionAnalytics 
             //update the value of all the observable collections.
@@ -145,6 +150,8 @@ namespace PlexShare.Dashboard.UI.ViewModel
             //update the total message count
 
             //update total paritcipant count 
+            TotalParticipantsCount = 201;
+            //TotalParticipantsCount = 200;
 
             //update the engagement rate 
 

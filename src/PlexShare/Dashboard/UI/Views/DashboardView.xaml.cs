@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlexShare.Dashboard.UI.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,8 @@ namespace PlexShare.Dashboard.UI.Views
     /// </summary>
     public partial class DashboardView : UserControl
     {
+        //defining the dashboard View Model 
+        public DashboardViewModel dashboardViewModel { get; set; }
         public DashboardView()
         {
             InitializeComponent();
@@ -29,6 +32,19 @@ namespace PlexShare.Dashboard.UI.Views
             //here i can initialise the dashboard view model to be able to use 
             //and to be able to utilise the functionality to update the vm whenever the refresh button is clicked for this purpose 
 
+            this.dashboardViewModel =  new DashboardViewModel();
+            this.DataContext = dashboardViewModel;
+        }
+
+
+        //defining the onrefreshButtonClick event for this purpose 
+        public void OnRefreshButtonClick(object sender, RoutedEventArgs e)
+        {
+            //updating the view Model 
+            this.dashboardViewModel.UpdateDashboardViewModel();
+
+            //say everything went fine 
+            return;
         }
     }
 }
