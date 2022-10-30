@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Content;
+using Dashboard;
 using Dashboard.Server.Summary;
 using Dashboard.Server.Telemetry;
 using Networking;
