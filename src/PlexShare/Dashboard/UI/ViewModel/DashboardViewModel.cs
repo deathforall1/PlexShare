@@ -31,7 +31,55 @@ namespace PlexShare.Dashboard.UI.ViewModel
         public int attentiveUsers { get; set; }
         public int nonAttentiveUsers { get; set; }
 
-      
+        public int totalMessageCount { get; set; }
+
+        public int totalParticipantsCount { get; set; }
+
+        public double engagementRate { get; set; }
+
+        /// <summary>
+        /// Total number of messages sent in chat during the session
+        /// </summary>
+        public int TotalMessageCount
+        {
+            get { return totalMessageCount; }
+            set
+            {
+                if (totalMessageCount != value)
+                {
+                    totalMessageCount = value;
+                    OnPropertyChanged(nameof(TotalMessageCount));
+                }
+            }
+        }
+
+        public int TotalParticipantsCount
+        {
+            get { return totalParticipantsCount; }
+            set
+            {
+                if (totalParticipantsCount != value)
+                {
+                    totalParticipantsCount = value;
+                    OnPropertyChanged(nameof(TotalParticipantsCount));
+                }
+            }
+        }
+
+
+        public double EngagementRate
+        {
+            get { return engagementRate; }
+            set
+            {
+                if (engagementRate != value)
+                {
+                    engagementRate = value;
+                    OnPropertyChanged(nameof(EngagementRate));
+                }
+            }
+        }
+
         //constructor for view model 
         public DashboardViewModel()
         {
@@ -74,10 +122,41 @@ namespace PlexShare.Dashboard.UI.ViewModel
 
             attentiveUsers = 60;
             nonAttentiveUsers = 100 - attentiveUsers;
-           
+
+            totalParticipantsCount = 140;
+            totalMessageCount = 104;
+            engagementRate = 94.2;
 
         }
 
+        //function to update the viewModel whenever required 
+        public void UpdateDashboardViewModel()
+        {
+            //we have to fetech the analytics 
+            //clientSessionManager.GetAnalytics()
+            userCountVsTimeStamps.Add(new UserCountVsTimeStamp { UserCount = 50, TimeStamp = 5.0 });
+
+
+            userIdVsChatCounts.Add(new UserIdVsChatCount { userId = 5, chatCount = 16 });
+
+            //once got the sessionAnalytics 
+            //update the value of all the observable collections.
+
+            //update the total message count
+
+            //update total paritcipant count 
+
+            //update the engagement rate 
+
+            //update attentive and non attentive users 
+
+
+            return;
+    
+        }
+        
+        
+        
         //public event PropertyChangedEventHandler? PropertyChanged;
         //the following function notifies the view whenever the property changes on the viewmodel 
         public void OnPropertyChanged(string property)
@@ -88,4 +167,6 @@ namespace PlexShare.Dashboard.UI.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
 
     }
+
+
 }

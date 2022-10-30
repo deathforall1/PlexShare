@@ -226,7 +226,7 @@
                         </Grid.Effect>
                     </Grid>
                     <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock x:Name="ParticipantsCount" Text="200" 
+                        <TextBlock x:Name="ParticipantsCount" Text="{Binding totalParticipantsCount}" 
                                    FontFamily="Champagne &amp; Limousines" Foreground="Black" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <TextBlock Text="Participants Count" 
                                    FontFamily="Champagne &amp; Limousines" FontSize="13" Foreground="Black" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
@@ -255,9 +255,9 @@
                         </Grid.Effect>
                     </Grid>
                     <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock x:Name="ChatCount" Text="200" 
+                        <TextBlock x:Name="ChatCount" Text="{Binding totalMessageCount}" 
                                    FontFamily="Champagne &amp; Limousines" Foreground="Black" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Text="Participants Count" 
+                        <TextBlock Text="Messages Count" 
                                    FontFamily="Champagne &amp; Limousines" FontSize="13" Foreground="Black" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
                     </StackPanel>
                 </Grid>
@@ -284,9 +284,9 @@
                         </Grid.Effect>
                     </Grid>
                     <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock x:Name="EngagementCount" Text="200" 
+                        <TextBlock x:Name="EngagementCount" Text="{Binding engagementRate}" 
                                    FontFamily="Champagne &amp; Limousines" Foreground="Black" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Text="Participants Count" 
+                        <TextBlock Text="Engagement Rate" 
                                    FontFamily="Champagne &amp; Limousines" FontSize="13" Foreground="Black" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
                     </StackPanel>
                 </Grid>
