@@ -22,7 +22,7 @@ namespace Dashboard
 
         }
 
-        public UserData(int clientID, string clientName)
+        public UserData( string clientName, int clientID)
         {
             userID = clientID;
             username = clientName;
