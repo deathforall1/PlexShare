@@ -8,6 +8,8 @@ using Dashboard;
 using Dashboard.Server.Summary;
 using Dashboard.Server.Telemetry;
 using Networking;
+using PlexShare.Dashboard;
+using PlexShare.Dashboard.Server.SessionManagement;
 using ScreenSharing;
 using Whiteboard;
 
