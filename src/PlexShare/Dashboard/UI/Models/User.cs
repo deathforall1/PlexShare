@@ -8,16 +8,20 @@ namespace Client.Models
 {
     public class User
     {
-        //in this we will store the data about the user
+        //storing the details about the user 
+        public int userId { get; set; }
+       
         public string userName { get; set; }
+        
         public string status { get; set; }
        
 
-        //defining the constructor for the user 
-        public User(string username, string statuss)
+        //constructor for the User 
+        public User(int userId , string username, string statuss)
         {
-            userName = username;
-            status = statuss;
+            this.userId = userId;
+            this.userName = username;
+            this.status = statuss;
         }
     }
 

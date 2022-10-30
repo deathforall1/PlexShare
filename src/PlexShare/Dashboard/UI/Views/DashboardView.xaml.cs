@@ -25,6 +25,10 @@ namespace PlexShare.Dashboard.UI.Views
         public DashboardView()
         {
             InitializeComponent();
+
+            //here i can initialise the dashboard view model to be able to use 
+            //and to be able to utilise the functionality to update the vm whenever the refresh button is clicked for this purpose 
+
         }
     }
 }

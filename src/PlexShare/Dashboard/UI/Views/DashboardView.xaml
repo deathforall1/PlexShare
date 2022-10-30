@@ -29,7 +29,7 @@
         <!--<Border BorderBrush="Green" BorderThickness="2">-->
 
             <!--now adding the static list to show the list of users in the column 0 -->
-            <ListView Grid.Column="0" x:Name="ContactsLV" ItemsSource="{Binding ListOfUsers}" >
+            <ListView Grid.Column="0" x:Name="ContactsLV" ItemsSource="{Binding participantsList}" d:ItemsSource="{d:SampleData ItemCount=5}" >
 
                 <ListView.ItemTemplate>
                        
@@ -101,6 +101,8 @@
                     </syncfusion:ColumnSeries.AdornmentsInfo>
                 </syncfusion:ColumnSeries>
             </syncfusion:SfChart>
+            
+            <!--chart for showing the chat count vs each user--> 
             <syncfusion:SfChart Grid.Column="1" Grid.Row="0" Background="WhiteSmoke">
                 <syncfusion:SfChart.PrimaryAxis>
                     <syncfusion:CategoryAxis Header="Time Stamp" />
@@ -111,7 +113,7 @@
                 <syncfusion:SfChart.Legend>
                     <syncfusion:ChartLegend/>
                 </syncfusion:SfChart.Legend>
-                <syncfusion:ColumnSeries  ItemsSource="{Binding userCountVsTimeStamps}" XBindingPath="TimeStamp" YBindingPath="UserCount" ShowTooltip="True" >
+                <syncfusion:ColumnSeries  ItemsSource="{Binding userIdVsChatCounts}" XBindingPath="userId" YBindingPath="chatCount" ShowTooltip="True" >
                     <syncfusion:ColumnSeries.AdornmentsInfo>
                         <syncfusion:ChartAdornmentInfo ShowLabel="True" >
                         </syncfusion:ChartAdornmentInfo>
