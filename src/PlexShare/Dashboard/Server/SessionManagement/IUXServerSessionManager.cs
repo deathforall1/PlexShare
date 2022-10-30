@@ -5,16 +5,16 @@ namespace Dashboard.Server.SessionManagement
 {
     public interface IUXServerSessionManager
     {
-        /// <summary>
-        ///     Returns the credentials required to
-        ///     Join or start the meeting
-        /// </summary>
+        
+        //     Returns the credentials required to
+        //     Join or start the meeting
+        
         /// <returns> A MeetingCredentials Object </returns>
         MeetingCredentials GetPortsAndIPAddress();
 
-        /// <summary>
+        
         ///     Event to notify the UX Server about the end of the meeting.
-        /// </summary>
+        
         public event NotifyEndMeet MeetingEnded;
     }
 }
