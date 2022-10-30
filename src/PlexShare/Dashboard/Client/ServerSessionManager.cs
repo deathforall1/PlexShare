@@ -90,6 +90,54 @@ namespace Dashboard.Server.SessionManagement
             RemoveClientProcedure(null, userIDInt);
         }
 
+        //     Networking module calls this function once the data is sent from the client side.
+        //     The SerializedObject is the data sent by the client module which is first deserialized and processed accordingly
 
+        public void OnDataReceived(string serializedObject)
+        {
+            if (serializedObject == null)
+            {
+                Trace.WriteLine("[Server Dashboard] Null received from client");
+                return;
+            }
+
+            // the object is obtained by deserializing the string and handling the cases 
+            // based on the 'eventType' field of the deserialized object. 
+            var deserializedObj = _serializer.Deserialize<ClientToServerData>(serializedObject);
+
+            // If a null object or username is received, return without further processing.
+            if (deserializedObj == null || deserializedObj.username == null)
+            {
+                Trace.WriteLine("[Server Dashboard] Null object provided by the client.");
+                return;
+            }
+
+            switch (deserializedObj.eventType)
+            {
+                case "addClient":
+                    ClientArrivalProcedure(deserializedObj);
+                    return;
+
+                case "getSummary":
+                    GetSummaryProcedure(deserializedObj);
+                    return;
+
+                case "getAnalytics":
+                    GetAnalyticsProcedure(deserializedObj);
+                    return;
+
+                case "removeClient":
+                    RemoveClientProcedure(deserializedObj);
+                    return;
+
+                case "endMeet":
+                    EndMeetProcedure(deserializedObj);
+                    return;
+
+                default:
+                    Trace.WriteLine("[Server Dashboard] Incorrect Event type specified");
+                    return;
+            }
+        }
 
     }
