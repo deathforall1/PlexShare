@@ -97,7 +97,6 @@ namespace Dashboard.Server.SessionManagement
         {
             if (serializedObject == null)
             {
-                Trace.WriteLine("[Server Dashboard] Null received from client");
                 return;
             }
 
@@ -108,7 +107,6 @@ namespace Dashboard.Server.SessionManagement
             // If a null object or username is received, return without further processing.
             if (deserializedObj == null || deserializedObj.username == null)
             {
-                Trace.WriteLine("[Server Dashboard] Null object provided by the client.");
                 return;
             }
 
