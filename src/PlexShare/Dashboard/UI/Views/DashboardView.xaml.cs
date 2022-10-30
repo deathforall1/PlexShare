@@ -46,5 +46,28 @@ namespace PlexShare.Dashboard.UI.Views
             //say everything went fine 
             return;
         }
+
+
+        public void OnSwitchModeButtonClick(object sender, RoutedEventArgs e)
+        { 
+            //just call the session manager to change the mode of the current lab 
+        
+        }
+
+
+        public void OnLeaveButtonClick(object sender, RoutedEventArgs e)
+        { 
+        
+            //just call the client session manager to leave the meeting 
+            //clientSessionManager.RemoveClient();
+        }
+
+        public void OnUploadButtonClick(object sender, RoutedEventArgs e)
+        { 
+            //i have to call the view of the cloud UI to give option to upload the file
+            //the file will be directly send to the viewmodel of the cloud team 
+
+        
+        }
     }
 }

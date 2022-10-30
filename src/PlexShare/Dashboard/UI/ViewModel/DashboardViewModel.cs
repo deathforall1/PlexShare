@@ -128,6 +128,25 @@ namespace PlexShare.Dashboard.UI.ViewModel
             engagementRate = 94.2;
             TotalParticipantsCount = 200;
 
+
+
+
+            //############################################################################################
+
+            //clientSessionManager = SessionManagerFactory.GetClientSessionManager();
+
+
+            ////defining the sessionanalytics to store the information about the sessionanalytics 
+            //sessionAnalytics = new SessionAnalytics();
+            //sessionAnalytics.chatCountForEachUser = new Dictionary<int, int>();
+            //sessionAnalytics.insincereMembers = new List<int>();
+            //sessionAnalytics.userCountAtAnyTime = new Dictionary<DateTime, int>();
+
+
+            ////this function will be called whenever the summary and the telemetry data wil be ready 
+            //clientSessionManager.SummaryReady += (latestSummary) => OnSummaryChanged(latestSummary);
+            //clientSessionManager.AnalyticsReady += (latestAnalytics) => OnAnalyticsChanged(latestAnalytics);
+//########################################################################################
         }
 
         //function to update the viewModel whenever required 
@@ -161,9 +180,40 @@ namespace PlexShare.Dashboard.UI.ViewModel
             return;
     
         }
-        
-        
-        
+
+
+
+
+
+//#####################################################################################
+
+        //function to listen to any of the session data changed subscribed to the IClientSessionNotifications
+        public void OnClientSessionChanged(string session)
+        {
+            //update the participants list here
+
+
+            return;
+        }
+
+
+
+        //##################################################################################
+        //implementing the onanalytics changed
+        //public void OnAnalyticsChanged(SessionAnalytics latestAnalytics)
+        //{
+
+        //    sessionAnalytics = latestAnalytics;
+
+        //    //say everything went fine 
+        //    return;
+        //}
+
+
+//############################################################################## 
+
+
+
         //public event PropertyChangedEventHandler? PropertyChanged;
         //the following function notifies the view whenever the property changes on the viewmodel 
         public void OnPropertyChanged(string property)
