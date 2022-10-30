@@ -1,8 +1,11 @@
 ﻿using Client.Models;
 using LiveCharts;
+using LiveCharts.Defaults;
 using PlexShare.Dashboard.UI.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,63 +14,216 @@ using System.Windows.Markup;
 
 namespace PlexShare.Dashboard.UI.ViewModel
 {
-    internal class DashboardViewModel
+    public class DashboardViewModel : INotifyPropertyChanged
     {
         //this is the view mode for the dashboard in this we will be fetaching the details from the models and then storing it in the viewmodel and then we will be binding to the view of the application 
-
-        //defining the list of users 
-        public List<User> ListOfUsers { get; set; }
+        //ObservableCollection  for storing the list of pariticipants and their status of screensharing
+        public ObservableCollection<User> participantsList { get; set; }
         public string TestingVariable { get; set; }
 
-        //deifining the list to store the number of userlist at a given time 
-        //public List<int> UsersCounList { get; set; }
+       //ObservableCollection for storing usercount at every time stamp 
+        public ObservableCollection<UserCountVsTimeStamp> userCountVsTimeStamps { get; set; }
 
-        ////defining the list to store the time stamp 
-        //public List<double> TimeStamp { get; set; }
-        
-        public List<UserCountVsTimeStamp> userCountVsTimeStamps { get; set; }   
+        //ObservableCollection for storing the number of chat count for each user 
+        public ObservableCollection<UserIdVsChatCount> userIdVsChatCounts { get; set; }
 
-        //public List<int> x{ get; set; }
-        //public List<int> y{ get; set; }
+        //storing the attentive and non attentive users in the meeting 
+        public int attentiveUsers { get; set; }
+        public int nonAttentiveUsers { get; set; }
 
-        //defining the constructor for the dashboardviewmodel
+        public int totalMessageCount { get; set; }
+
+        private int totalParticipantsCount { get; set; }
+
+        public double engagementRate { get; set; }
+
+        /// <summary>
+        /// Total number of messages sent in chat during the session
+        /// </summary>
+        public int TotalMessageCount
+        {
+            get { return this.totalMessageCount; }
+            set
+            {
+                if (this.totalMessageCount != value)
+                {
+                    this.totalMessageCount = value;
+                    OnPropertyChanged(nameof(TotalMessageCount));
+                }
+            }
+        }
+
+        public int TotalParticipantsCount
+        {
+            get { return totalParticipantsCount; }
+            set
+            {
+                if (totalParticipantsCount != value)
+                {
+                    totalParticipantsCount = value;
+                    OnPropertyChanged("TotalParticipantsCount");
+                }
+            }
+        }
+
+
+        public double EngagementRate
+        {
+            get { return engagementRate; }
+            set
+            {
+                if (engagementRate != value)
+                {
+                    engagementRate = value;
+                    OnPropertyChanged(nameof(EngagementRate));
+                }
+            }
+        }
+
+        //constructor for view model 
         public DashboardViewModel()
         {
             
             
-            //DataContext = this;
-            ListOfUsers = new List<User>();
-            User user1 = new User("Rupesh Kumar", "Presenting");
-            User user2 = new User("Shubham Raj", "Presenting");
-            User user3 = new User("Hrishi Raaj", "Presenting");
-            User user4 = new User("Saurabh kumar", "Not Presenting");
-            User user5 = new User("Aditya Agarwal", "Not Presenting");
-            ListOfUsers.Add(user1);
-            ListOfUsers.Add(user2);
-            ListOfUsers.Add(user3);
-            ListOfUsers.Add(user4);
-            ListOfUsers.Add(user5);
-            //just adding the random comment for testing the tagging of the commit for this purpose 
-            TestingVariable = "Hi this is rupesh and i am implementing the dashboard UI for this purpose";
+            //initialising participantsList 
+            participantsList = new ObservableCollection<User>();
+            User user1 = new User(1, "Rupesh Kumar", "Presenting");
+            User user2 = new User(2, "Shubham Raj", "Presenting");
+            User user3 = new User(3, "Hrishi Raaj", "Presenting");
+            User user4 = new User(4, "Saurabh kumar", "Not Presenting");
+            User user5 = new User(5, "Aditya Agarwal", "Not Presenting");
+            participantsList.Add(user1);
+            participantsList.Add(user2);
+            participantsList.Add(user3);
+            participantsList.Add(user4);
+            participantsList.Add(user5);
+           
 
-            userCountVsTimeStamps = new List<UserCountVsTimeStamp>()
+
+            //initialising userCountVsTimeStamps
+            userCountVsTimeStamps = new ObservableCollection<UserCountVsTimeStamp>()
             {
                 new UserCountVsTimeStamp { UserCount = 10, TimeStamp = 1.0},
                 new UserCountVsTimeStamp  { UserCount = 20, TimeStamp = 2.0 },
                 new UserCountVsTimeStamp { UserCount= 30, TimeStamp = 3.0 },
                 new UserCountVsTimeStamp { UserCount = 40, TimeStamp = 4.0 }
             };
-            ////allocating the memory for the usercount list and the time stamp list 
-            //UsersCounList = new List<int>()
-            //{ 
-            //    10, 20, 30, 40 , 50, 60
-            //};
-            //TimeStamp = new List<double>()
-            //{ 
-            //    1.0, 2.0, 3.0, 4.0, 5.0, 6.0
-            //};
 
+
+            //initialising the uservschatcount collection 
+            userIdVsChatCounts = new ObservableCollection<UserIdVsChatCount>(){
+                 new UserIdVsChatCount { userId = 1, chatCount = 10},
+                new UserIdVsChatCount  { userId = 2, chatCount = 12 },
+                new UserIdVsChatCount { userId= 3, chatCount = 13 },
+                new UserIdVsChatCount { userId = 4, chatCount = 4 }
+            };
+
+
+
+            attentiveUsers = 60;
+            nonAttentiveUsers = 100 - attentiveUsers;
+
+            TotalParticipantsCount = 140;
+            totalMessageCount = 104;
+            engagementRate = 94.2;
+            TotalParticipantsCount = 200;
+
+
+
+
+            //############################################################################################
+
+            //clientSessionManager = SessionManagerFactory.GetClientSessionManager();
+
+
+            ////defining the sessionanalytics to store the information about the sessionanalytics 
+            //sessionAnalytics = new SessionAnalytics();
+            //sessionAnalytics.chatCountForEachUser = new Dictionary<int, int>();
+            //sessionAnalytics.insincereMembers = new List<int>();
+            //sessionAnalytics.userCountAtAnyTime = new Dictionary<DateTime, int>();
+
+
+            ////this function will be called whenever the summary and the telemetry data wil be ready 
+            //clientSessionManager.SummaryReady += (latestSummary) => OnSummaryChanged(latestSummary);
+            //clientSessionManager.AnalyticsReady += (latestAnalytics) => OnAnalyticsChanged(latestAnalytics);
+//########################################################################################
         }
 
+        //function to update the viewModel whenever required 
+        public void UpdateDashboardViewModel()
+        {
+            //we have to fetech the analytics 
+            //clientSessionManager.GetAnalytics()
+            //userCountVsTimeStamps.Clear();
+            userCountVsTimeStamps.Add(new UserCountVsTimeStamp { UserCount = 50, TimeStamp = 5.0 });
+
+            //userIdVsChatCounts.Clear();
+
+            userIdVsChatCounts.Add(new UserIdVsChatCount { userId = 5, chatCount = 16 });
+
+
+
+            //once got the sessionAnalytics 
+            //update the value of all the observable collections.
+
+            //update the total message count
+
+            //update total paritcipant count 
+            TotalParticipantsCount = 201;
+            //TotalParticipantsCount = 200;
+
+            //update the engagement rate 
+
+            //update attentive and non attentive users 
+
+
+            return;
+    
+        }
+
+
+
+
+
+//#####################################################################################
+
+        //function to listen to any of the session data changed subscribed to the IClientSessionNotifications
+        public void OnClientSessionChanged(string session)
+        {
+            //update the participants list here
+
+
+            return;
+        }
+
+
+
+        //##################################################################################
+        //implementing the onanalytics changed
+        //public void OnAnalyticsChanged(SessionAnalytics latestAnalytics)
+        //{
+
+        //    sessionAnalytics = latestAnalytics;
+
+        //    //say everything went fine 
+        //    return;
+        //}
+
+
+//############################################################################## 
+
+
+
+        //public event PropertyChangedEventHandler? PropertyChanged;
+        //the following function notifies the view whenever the property changes on the viewmodel 
+        public void OnPropertyChanged(string property)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
     }
+
+
 }
