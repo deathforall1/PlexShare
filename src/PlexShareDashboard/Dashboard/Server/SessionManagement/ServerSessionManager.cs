@@ -3,15 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Content;
+using PlexShareContent;
+using PlexShareDashboard;
 using Dashboard;
-using Dashboard.Server.Summary;
-using Dashboard.Server.Telemetry;
+using PlexShareDashboard.Dashboard.Server.Summary;
+using PlexShareDashboard.Dashboard.Server.Telemetry;
 using Networking;
 using PlexShare.Dashboard;
 using PlexShare.Dashboard.Server.SessionManagement;
-using ScreenSharing;
-using Whiteboard;
+using PlexShareScreenshare;
+using PlexShareWhiteboard;
+using PlexShareDashboard.Dashboard.Server.SessionManagement;
+using Networking.Serialization;
 
 namespace Dashboard.Server.SessionManagement
 {
@@ -78,7 +81,7 @@ namespace Dashboard.Server.SessionManagement
             {
                 userCount += 1;
                 if (userCount == 1)
-                    _telemetry = testmode ? new Telemetry.Telemetry(this) : TelemetryFactory.GetTelemetryInstance();
+                    _telemetry =  TelemetryFactory.GetTelemetryInstance();
                 UserData tempUser = new("dummy", userCount);
                 _communicator.AddClient(userCount.ToString(), socketObject);
                 SendDataToClient("newID", null, null, null, tempUser, userCount);
@@ -400,13 +403,13 @@ namespace Dashboard.Server.SessionManagement
 
         //Function to send data from Server to client side of the session manager.
         private void SendDataToClient(string eventName, SessionData sessionData, SummaryData summaryData,
-           SessionAnalytics sessionaAnalytics, UserData user, int userId = -1)
+           SessionAnalytics sessionAnalytics, UserData user, int userId = -1)
         {
             ServerToClientData serverToClientData;
             lock (this)
             {
                 serverToClientData =
-                    new ServerToClientData(eventName, sessionData, summaryData, sessionaAnalytics, user);
+                    new ServerToClientData(eventName, sessionData, summaryData, sessionAnalytics, user);
                 // Sending data to the client
                 var serializedSessionData = _serializer.Serialize(serverToClientData);
 

@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Dashboard;
+using PlexShare.Dashboard.Client.SessionManagement;
+using System;
 
 
-namespace Dashboard.Client.SessionManagement
+namespace PlexShareDashboard.Dashboard.Client.SessionManagement
 {
 
     // this is the interface for UX to access Client session manager's methods and fields.
@@ -24,7 +26,7 @@ namespace Dashboard.Client.SessionManagement
         void GetSummary();
 
         //it is used to subscribe for any changes in the Session object
-        void SubscribeSession(IClientSessionNotification listener);
+        void SubscribeSession(IClientSessionNotifications listener);
 
         //it will gather analytics of the users and messages
         void GetAnalytics();
