@@ -12,6 +12,8 @@ namespace PlexShareDashboard.Dashboard.Server.Telemetry
 
         public List<int> listOfInSincereMembers;
 
-        public Dictionary<DateTime, int> userCountAtAnyTime;
+        public Dictionary<DateTime, int> userCountVsTimeStamp;
+
+        public SessionSummary sessionSummary;
     }
 }
