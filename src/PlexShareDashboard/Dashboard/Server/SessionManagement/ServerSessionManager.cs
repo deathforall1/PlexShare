@@ -24,11 +24,11 @@ namespace Dashboard.Server.SessionManagement
     public class ServerSessionManager : ITelemetrySessionManager, IUXServerSessionManager, INotificationHandler
     {
         private readonly ICommunicator _communicator;
-        private readonly IContentServer _contentServer;
+        //private readonly IContentServer _contentServer;
         private readonly ISerializer _serializer;
 
         private readonly SessionData _sessionData;
-        private readonly ISummarizer _summarizer;
+       // private readonly ISummarizer _summarizer;
 
         private readonly List<ITelemetryNotifications> _telemetrySubscribers;
 
@@ -40,7 +40,7 @@ namespace Dashboard.Server.SessionManagement
         private ITelemetry _telemetry;
         public bool summarySaved;
         private int userCount;
-        private ScreenShareServer _screenShareServer;
+       // private ScreenShareServer _screenShareServer;
 
         //Constructor for the ServerSessionManager.
         //It initialises whiteboard module,content module, screenshare module,
@@ -56,17 +56,17 @@ namespace Dashboard.Server.SessionManagement
             _sessionData = new SessionData();
             _serializer = new Serializer();
             _telemetrySubscribers = new List<ITelemetryNotifications>();
-            _summarizer = SummarizerFactory.GetSummarizer();
+          //  _summarizer = SummarizerFactory.GetSummarizer();
 
             userCount = 0;
 
-            _communicator = CommunicationFactory.GetCommunicator(false);
-            _communicator.Subscribe(moduleIdentifier, this);
+          //  _communicator = CommunicationFactory.GetCommunicator(false);
+           // _communicator.Subscribe(moduleIdentifier, this);
 
-            //_telemetry = new Telemetry.Telemetry();
-            _ = ServerBoardCommunicator.Instance;
-            _screenShareServer = ScreenShareFactory.GetScreenShareServer();
-            _contentServer = ContentServerFactory.GetInstance();
+            //------------------------------------_telemetry = new Telemetry.Telemetry();
+          //  _ = ServerBoardCommunicator.Instance;
+          //  _screenShareServer = ScreenShareFactory.GetScreenShareServer();
+         //   _contentServer = ContentServerFactory.GetInstance();
         }
 
 
@@ -126,6 +126,7 @@ namespace Dashboard.Server.SessionManagement
                     ClientArrivalProcedure(deserializedObj);
                     return;
 
+                    /*
                 case "getSummary":
                     GetSummaryProcedure(deserializedObj);
                     return;
@@ -133,6 +134,8 @@ namespace Dashboard.Server.SessionManagement
                 case "getAnalytics":
                     GetAnalyticsProcedure(deserializedObj);
                     return;
+                    */
+
 
                 case "removeClient":
                     RemoveClientProcedure(deserializedObj);
@@ -237,9 +240,11 @@ namespace Dashboard.Server.SessionManagement
             }
         }
 
+
+
         //     Used to create a summary by fetching all the chats from the
         //     content moudule and then calling the summary module to create a summary
-        private SummaryData CreateSummary()
+     /*   private SummaryData CreateSummary()
         {
             try
             {
@@ -258,6 +263,10 @@ namespace Dashboard.Server.SessionManagement
                 return null;
             }
         }
+     */
+
+
+
 
         //     This method is called when the host wants to end the meeting. The summary and analytics
         //     of the session is created and stored locally. The UX server is then notified about the end of the
@@ -271,10 +280,10 @@ namespace Dashboard.Server.SessionManagement
                 while (tries > 0 && summarySaved == false)
                 {
                     // Fetching all the chats from the content module
-                    var allChats = _contentServer.SGetAllMessages().ToArray();
+                //    var allChats = _contentServer.SGetAllMessages().ToArray();
 
-                    summarySaved = _summarizer.SaveSummary(allChats);
-                    _telemetry.SaveAnalytics(allChats);
+                //    summarySaved = _summarizer.SaveSummary(allChats);
+               //     _telemetry.SaveAnalytics(allChats);
 
                     tries--;
                 }
@@ -290,10 +299,12 @@ namespace Dashboard.Server.SessionManagement
 
             // stopping the communicator and notifying UX server about the End Meet event.
             _communicator.Stop();
-            _screenShareServer.Dispose();
+         //   _screenShareServer.Dispose();
             MeetingEnded?.Invoke();
         }
 
+
+        /*
         //     Fetches the chats from the content moudle and then asks telemetry to generate analytics on it.
         //     The analytics created are then sent to the client side again.
         private void GetAnalyticsProcedure(ClientToServerData receivedObject)
@@ -302,7 +313,7 @@ namespace Dashboard.Server.SessionManagement
             try
             {
                 // Fetching the chats and creating analytics on them
-                var allChats = _contentServer.SGetAllMessages().ToArray();
+            //    var allChats = _contentServer.SGetAllMessages().ToArray();
                 _sessionAnalytics = _telemetry.GetTelemetryAnalytics(allChats);
                 SendDataToClient("getAnalytics", null, null, _sessionAnalytics, user);
             }
@@ -320,6 +331,8 @@ namespace Dashboard.Server.SessionManagement
         }
 
 
+        */
+
         //this function is just for testing 
         public SessionData GetSessionData()
         {
@@ -327,6 +340,8 @@ namespace Dashboard.Server.SessionManagement
         }
 
 
+
+        /*
         //     This method is called when a request for getting summary reaches the server side.
         //     A summary is created along with a user object (with the ID and the name of the user who requested the summary)
         //     This data is then sent back to the client side.
@@ -336,6 +351,8 @@ namespace Dashboard.Server.SessionManagement
             UserData user = new(receivedObject.username, receivedObject.userID);
             SendDataToClient("getSummary", null, summaryData, null, user);
         }
+        */
+
 
         //     Checks if an IPAddress is valid or not.
         private static bool IsValidIPAddress(string IPAddress)
