@@ -12,9 +12,9 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Xml.Serialization;
-using Dashboard.Server.Telemetry;
+using OxyPlot.Wpf;
 using PlexShareDashboard.Dashboard.Server.Telemetry;
+//using PlexShareDashboard.Dashboard.Server.Telemetry;
 using ScottPlot;
 
 namespace Dashboard.Server.Persistence
@@ -24,7 +24,7 @@ namespace Dashboard.Server.Persistence
         public TelemetryPersistence()
         {
             var Path1 = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            var folderPath = Path.Combine(configPath, "plexshare");
+            var folderPath = Path.Combine(Path1, "plexshare");
             ServerDataPath = folderPath + "/Server/Persistence/PersistenceDownloads/TelemetryDownloads/ServerData/";
             TelemetryAnalyticsPath = folderPath + "/Server/Persistence/PersistenceDownloads/TelemetryDownloads/TelemetryAnalytics/";
             TelemetryAnalyticsPath = TelemetryAnalyticsPath + DateTime.Now.ToString("MM/dd/yyyy");
@@ -50,7 +50,7 @@ namespace Dashboard.Server.Persistence
             // Logic to plot and save UserCount Vs TimeStamp
 
 
-            var t1 = UserCountVsTimeStamp_PlotUtil(sessionAnalyticsData.userCountAtAnyTime, sessionId);
+            var t1 = UserCountVsTimeStamp_PlotUtil(sessionAnalyticsData.userCountVsTimeStamp, sessionId);
 
             // Logic to plot and save ChatCount Vs UserID
 
@@ -58,17 +58,17 @@ namespace Dashboard.Server.Persistence
 
             // Logic to save InsincereMembers list
 
-            var t3 = InsincereMembers_SaveUtil(sessionAnalyticsData.insincereMembers, sessionId);
+            var t3 = InsincereMembers_SaveUtil(sessionAnalyticsData.listOfInSincereMembers, sessionId);
 
-            var l1 = new List<string>();
-            l1.Add(t1.FileName);
-            l1.Add(t2.FileName);
-            l1.Add(t3.FileName);
+            //var l1 = new List<string>();
+            //l1.Add(t1.FileName);
+            //l1.Add(t2.FileName);
+            //l1.Add(t3.FileName);
 
             var response = new ResponseEntity();
             response.IsSaved = t1.IsSaved & t2.IsSaved & t3.IsSaved;
             response.FileName = sessionId;
-            response.TelemetryAnalyticsFiles = l1;
+            //response.TelemetryAnalyticsFiles = l1;
 
             PersistenceFactory.lastSaveResponse = response;
 
