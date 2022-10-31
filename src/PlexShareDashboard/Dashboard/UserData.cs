@@ -22,6 +22,7 @@ namespace Dashboard
 
         }
 
+        //parametrized constructor
         public UserData( string clientName, int clientID)
         {
             userID = clientID;
