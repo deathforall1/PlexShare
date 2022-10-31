@@ -5,7 +5,7 @@
 ///     of Persisitence Module. We first need to create instances of SummaryPersistence
 ///     and TelemetryPersistence to call different functions corresponding their interfaces
 /// </summary>
-using PlexShareDashboard.Dashboard.Server.Persistence;
+//using PlexShareDashboard.Dashboard.Server.Persistence;
 using PlexShareDashboard.Dashboard.Server.Telemetry;
 namespace Dashboard.Server.Persistence
 {
