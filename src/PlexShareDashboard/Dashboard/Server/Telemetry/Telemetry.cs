@@ -116,8 +116,8 @@ namespace PlexShareDashboard.Dashboard.Server.Telemetry
         {
             var currTime = DateTime.Now;
             //we have to recalculate and  update the telemetric analytics
-            //CalculateUserCountVsTimeStamp(newSession, );
-            //CalculateArrivalExitTimeOfUser();
+            //CalculateUserCountVsTimeStamp(newSession, currTime);
+            //CalculateArrivalExitTimeOfUser(newSession, currTime);
 
         }
 
