@@ -10,7 +10,7 @@ namespace PlexShareDashboard.Dashboard.Server.Telemetry
     {
         public Dictionary<int, int> chatCountForEachUser;
 
-        public List<int> inSincereMembers;
+        public List<int> listOfInSincereMembers;
 
         public Dictionary<DateTime, int> userCountAtAnyTime;
     }
