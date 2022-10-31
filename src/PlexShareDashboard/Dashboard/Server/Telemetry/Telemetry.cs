@@ -7,13 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dashboard;
+using Dashboard.Server.Persistence;
+using PlexShareDashboard.Dashboard.Server.Persistence;
 
 namespace PlexShareDashboard.Dashboard.Server.Telemetry
 {
     public class Telemetry : ITelemetry, ITelemetryNotifications
     {
-        //private readonly ITelemetryPe
+        //getting the sessionmanager and persistence instance using the corresponding factory
         private readonly ITelemetrySessionManager serverSessionManager = SessionManagerFactory.GetServerSessionManager();
+        private readonly TelemetryPersistence persistence = PersistenceFactory.GetTelemetryPersistenceInstance();
+
+
 
         //defining the variables to store the telemteric data 
         public Dictionary<DateTime, int> userCountVsEachTimeStamp = new Dictionary<DateTime, int>();
@@ -23,6 +28,7 @@ namespace PlexShareDashboard.Dashboard.Server.Telemetry
         public List<int> listOfInSincereMembers = new List<int>();
 
         //constructor for telemetry module 
+        
         public Telemetry()
         {
             //we have to subscribe to the ITelemetryNotifications 
@@ -33,9 +39,32 @@ namespace PlexShareDashboard.Dashboard.Server.Telemetry
 
         public SessionAnalytics GetTelemetryAnalytics(string allChatMessages)
         {
+
+            GetUserIdVsChatCount(allChatMessages);
+            GetListOfInsincereMembers();
+
+            var currTotalChatCount = 0;
+            var currTotalUser = 0;
+
+
+            //using the for loop to find these values 
+            foreach (var eachUser in userIdVsChatCount)
+            {
+                currTotalChatCount = currTotalChatCount + eachUser.Value;
+                currTotalUser = currTotalUser + 1;
+            }
+
+
+
             //here goes the implementation 
-            SessionAnalytics sessionAnalytics = new SessionAnalytics(); 
-            return sessionAnalytics;
+            SessionAnalytics currSessionAnalytics = new SessionAnalytics();
+            currSessionAnalytics.chatCountForEachUser = userIdVsChatCount;
+            currSessionAnalytics.listOfInSincereMembers = listOfInSincereMembers;
+            currSessionAnalytics.userCountVsTimeStamp = userCountVsEachTimeStamp;
+            currSessionAnalytics.sessionSummary.chatCount = currTotalChatCount;
+            currSessionAnalytics.sessionSummary.userCount = currTotalUser;
+
+            return currSessionAnalytics;
         }
 
         //function fetch the details from the chatcontext and then giving it to persistent to save the analytics on the server 
@@ -85,7 +114,11 @@ namespace PlexShareDashboard.Dashboard.Server.Telemetry
 
         public void OnAnalyticsChanged(SessionData newSession)
         {
-            //we have to update the telemetric analytics
+            var currTime = DateTime.Now;
+            //we have to recalculate and  update the telemetric analytics
+            //CalculateUserCountVsTimeStamp(newSession, );
+            //CalculateArrivalExitTimeOfUser();
+
         }
 
         //function to get the useridvschatcount 
