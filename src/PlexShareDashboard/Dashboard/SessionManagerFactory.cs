@@ -1,5 +1,5 @@
-﻿using Dashboard.Client.SessionManagement;
-using Dashboard.Server.SessionManagement;
+﻿using Dashboard.Server.SessionManagement;
+using PlexShareDashboard.Dashboard.Client.SessionManagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;

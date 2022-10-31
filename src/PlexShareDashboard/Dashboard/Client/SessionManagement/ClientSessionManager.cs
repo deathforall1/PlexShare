@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Content;
-using Dashboard.Server.Telemetry;
+using PlexShareContent;
+using PlexShareDashboard.Dashboard.Server.Telemetry;
 using Networking;
 using Networking.Serialization;
-using PlexShare.Dashboard;
+using PlexShareDashboard.Dashboard;
+using Dashboard;
+using PlexShareDashboard.Dashboard.Client.SessionManagement;
+using PlexShareScreenshare;
+using PlexShareWhiteboard;
 using PlexShare.Dashboard.Client.SessionManagement;
-using ScreenSharing;
-using Whiteboard;
+using PlexShare.Dashboard;
 
-namespace Dashboard.Client.SessionManagement
+namespace PlexShareDashboard.Dashboard.Client.SessionManagement
 {
     public delegate void NotifyEndMeet();
 
