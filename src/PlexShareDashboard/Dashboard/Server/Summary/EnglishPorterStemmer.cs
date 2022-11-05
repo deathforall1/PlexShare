@@ -490,8 +490,8 @@ namespace PlexShareDashboard.Dashboard.Server.Summary
         {
             if (word.EndsWith("e") &&
                 (SuffixInR2(word, r2, "e") ||
-                    (SuffixInR1(word, r1, "e") &&
-                        !EndsInShortSyllable(ReplaceSuffix(word, "e")))))
+                    SuffixInR1(word, r1, "e") &&
+                        !EndsInShortSyllable(ReplaceSuffix(word, "e"))))
             {
                 return ReplaceSuffix(word, "e");
             }

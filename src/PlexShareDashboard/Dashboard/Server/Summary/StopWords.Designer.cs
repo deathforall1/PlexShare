@@ -33,7 +33,7 @@ namespace PlexShareDashboard.Dashboard.Server.Summary
             {
                 if (object.ReferenceEquals(resourceMan, null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PlexShareDashboard.Dashboard.Server.Summary.StopWords.stop_words", typeof(StopWords).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Summary.Resources.StopWords.stop_words", typeof(StopWords).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 
 using Dashboard.Server.Persistence;
-using PlexShareDashboard.Dashboard.Server.Persistence;
+
+using PlexShareContent;
 
 namespace PlexShareDashboard.Dashboard.Server.Summary
 {
@@ -28,7 +29,6 @@ namespace PlexShareDashboard.Dashboard.Server.Summary
                 Trace.WriteLine("Empty chat context obtained.");
                 return "";
             }
-
             List<(string, bool)> discussionChat = new();
             foreach (var chat in chats)
                 foreach (var msg in chat.MsgList)
