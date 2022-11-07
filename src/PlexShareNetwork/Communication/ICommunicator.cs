@@ -68,5 +68,5 @@ namespace PlexShareNetwork.Communication
         /// <param name="isHighPriority"> Boolean which tells whether data is high priority or low priority. </param>
         /// <returns> void </returns>
         public void Subscribe(string moduleName, INotificationHandler notificationHandler, bool isHighPriority = false);
-	}
+    }
 }

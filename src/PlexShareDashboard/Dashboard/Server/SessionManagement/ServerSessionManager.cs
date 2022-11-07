@@ -494,7 +494,7 @@ namespace Dashboard.Server.SessionManagement
                 string serializedSessionData = _serializer.Serialize(serverToClientData);
                
                 if (userId == -1)
-                    _communicator.Send(serializedSessionData, moduleIdentifier);
+                    _communicator.Send(serializedSessionData, moduleIdentifier,null);
                 else
                     _communicator.Send(serializedSessionData, moduleIdentifier, userId.ToString());
             }
