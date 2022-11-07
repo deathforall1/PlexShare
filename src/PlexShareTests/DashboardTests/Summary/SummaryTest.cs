@@ -26,6 +26,12 @@ namespace PlexShareTests.DashboardTests.Summary
             _summarizer = SummarizerFactory.GetSummarizer();
         }
 
+        [Fact]
+        public void LoadStopWord()
+        {
+            ChatProcessor.LoadStopWords();
+        }
+
         /// <summary>
         ///     Null chat should give empty string
         /// </summary>

@@ -10,6 +10,7 @@ using System.Windows.Controls;
 
 using PlexShareContent;
 using System.IO;
+using System.Reflection;
 
 using PlexShareDashboard.Dashboard.Server.Summary;
 
@@ -35,18 +36,10 @@ namespace PlexShareDashboard.Dashboard.Server.Summary
         /// </summary>
         public static void LoadStopWords()
         {
-            // Load all text from resource file
-
-            /*string stopWordsBlob = InternalReadAllText(Environment.CurrentDirectory+ "/Resources/stop_words.txt", Encoding.UTF8);*/
-            /*string stopWordsBlob = Stopwords.GetStopWords();
-
-            // Split the text on newline character
-            string[] individualStopWords = stopWordsBlob.Split(new[] { "\r\n" }, StringSplitOptions.None);
-
-            StopWords = individualStopWords.ToList();
-
-            */
-            StopWords = Stopwords.GetStopWords();
+            Assembly asm = Assembly.GetExecutingAssembly();
+            StreamReader reader = new StreamReader(asm.GetManifestResourceStream("PlexShareDashboard.Dashboard.Server.Summary.Resources.stop_words.txt"));
+            string stopwords = reader.ReadToEnd();
+            StopWords = new List<string>(stopwords.Split(new string[] { Environment.NewLine }, StringSplitOptions.None));
         }
 
 
