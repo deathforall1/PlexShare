@@ -320,6 +320,8 @@ namespace PlexShareTests.DashboardTests.Telemetry
             telemetryInstance.eachUserExitTime.Clear();
 
 
+            //added some comments
+
             telemetryInstance.CalculateArrivalExitTimeOfUser(sessionData1, currTime1);
 
             //let user1 exits and user2 joins and hence the user1 will be insincere member 
