@@ -62,7 +62,7 @@ namespace PlexShareApp
             }
             
 
-            MainScreenView mainScreenView = new MainScreenView();
+            MainScreenView mainScreenView = new MainScreenView(this.Name_box.Text, this.Email_textbox.Text, absolute_path, ImageLocation, "-1", "0");
 
             
             //
@@ -97,7 +97,7 @@ namespace PlexShareApp
             {
                 return;
             }
-            MainScreenView mainScreenView = new MainScreenView();
+            MainScreenView mainScreenView = new MainScreenView(this.Name_box.Text, this.Email_textbox.Text, absolute_path, ImageLocation, this.Server_IP.Text, this.Server_PORT.Text);
             mainScreenView.Show();
             this.Close();
         }

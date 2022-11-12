@@ -13,28 +13,65 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
-
+using PlexShareDashboard.Dashboard.Server.SessionManagement;
+using PlexShare.Dashboard;
+using PlexShareDashboard.Dashboard.Client.SessionManagement;
+using Dashboard;
+using System.ComponentModel;
 
 namespace PlexShareApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainScreenView : Window
+    public partial class MainScreenView : Window, INotifyPropertyChanged
     {
         private bool chatOn;
         private static DashboardPage dashboardPage;
         private static WhiteBoardPage whiteBoardPage;
         private static ChatPageView chatPage;
         private static ScreenSharePage screenSharePage;
-        public MainScreenView()
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public MainScreenView(string name, string email, string picPath, string url, string ip, string port)
         {
+            IUXServerSessionManager serverSessionManager = SessionManagerFactory.GetServerSessionManager();
+            IUXClientSessionManager clientSessionManafer = SessionManagerFactory.GetClientSessionManager();
+            clientSessionManafer.MeetingEnded += () => CloseApp();
+            bool verified = false;
+
+            if (ip == "-1")
+            {
+                MeetingCredentials meetingCredentials = serverSessionManager.GetPortsAndIPAddress();
+                verified = clientSessionManafer.AddClient(meetingCredentials.ipAddress, meetingCredentials.port, name);
+            }
+            else
+            {
+                verified = clientSessionManafer.AddClient(ip, int.Parse(port), name);
+            }
             InitializeComponent();
             dashboardPage = new DashboardPage();
             whiteBoardPage = new WhiteBoardPage();
             chatPage = new ChatPageView();
             screenSharePage = new ScreenSharePage();
-            Main.Content = dashboardPage;
+            if (verified == true)
+                Main.Content = dashboardPage;
+        }
+
+        private void CloseApp()
+        {
+            Application.Current.Dispatcher.Invoke((Action)delegate // <--- HERE
+            {
+                Application.Current.Shutdown();
+            });
+
+
+        }
+
+        public void CloseApp(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
         /// <summary>
@@ -124,10 +161,7 @@ namespace PlexShareApp
         ///<summary>
         /// To close the window
         ///</summary>
-        private void CloseApp(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+        
 
         ///<summary>
         ///  To minimize the application

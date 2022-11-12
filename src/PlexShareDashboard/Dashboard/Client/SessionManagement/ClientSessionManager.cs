@@ -1,4 +1,5 @@
-﻿using System;
+﻿//This file is for client side session
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using PlexShareContent;

@@ -1,4 +1,4 @@
-﻿// This file contains the implementation of Server session manager.
+﻿//This file is for server side session
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
