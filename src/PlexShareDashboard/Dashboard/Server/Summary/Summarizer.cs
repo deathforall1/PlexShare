@@ -7,20 +7,13 @@ using System.Threading.Tasks;
 
 
 using Dashboard.Server.Persistence;
-//using PlexShareDashboard.Dashboard.Server.Telemetry;
 using PlexShareContent.DataModels;
+using PlexShareContent;
 
 namespace PlexShareDashboard.Dashboard.Server.Summary
 {
     internal class Summarizer : ISummarizer
     {
-        public enum MessageType
-        {
-            File,
-            Chat,
-            HistoryRequest
-        }
-
         private readonly ISummaryPersistence _persister;
 
         private readonly ChatProcessor _processor;
@@ -36,11 +29,11 @@ namespace PlexShareDashboard.Dashboard.Server.Summary
                 Trace.WriteLine("Empty chat context obtained.");
                 return "";
             }
-            List<(string, bool)> discussionChat = new();
+            List<string> discussionChat = new();
             foreach (var chat in chats)
                 foreach (var msg in chat.MessageList)
-                    //if (msg.GetType() == MessageType.Chat)
-                    discussionChat.Add((msg.Data, msg.Starred));
+                    if (msg.Type==MessageType.Chat)
+                        discussionChat.Add(msg.Data);
             return _processor.Summarize(discussionChat);
         }
         public bool SaveSummary(ChatThread[] chats)

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PlexShareContent.DataModels;
-//using PlexShareDashboard.Dashboard.Server.Telemetry;
 
 namespace PlexShareDashboard.Dashboard.Server.Summary
 {

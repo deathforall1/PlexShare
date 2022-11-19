@@ -33,7 +33,7 @@ namespace PlexShareDashboard.Dashboard.Server.Summary
         }
 
         // Here I create your my sample hard-coded data (Could be coming from an end-user app)
-        private static ModelInput CreateSingleDataSample(string inputTextStatement)
+        public static ModelInput CreateSingleDataSample(string inputTextStatement)
         {
             // Here (ModelInput object) you could provide new test data, hardcoded or from the end-user application, instead of the row from the file.
             ModelInput sampleForPrediction = new ModelInput { Text = inputTextStatement };
