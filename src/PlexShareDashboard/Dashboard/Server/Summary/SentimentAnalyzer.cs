@@ -1,4 +1,9 @@
-﻿using System;
+﻿/// <author>Morem Jayanth Kumar</author>
+/// <created>3/11/2022</created>
+/// <summary>
+///		This file contains all the code related to building the sentiment analyzer ML Model
+/// </summary>
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
