@@ -223,11 +223,6 @@ namespace PlexShareDashboard.Dashboard.Server.Summary
                 if (!sentenceScores.ContainsKey(chatMessage))
                     sentenceScores.Add(chatMessage, score);
             }
-
-            //foreach (KeyValuePair<string, int> entry in sentenceScores)
-            //{
-            //    Debug.WriteLine(entry.Key+"  "+entry.Value + "\n");
-            //}
             return sentenceScores;
         }
 
