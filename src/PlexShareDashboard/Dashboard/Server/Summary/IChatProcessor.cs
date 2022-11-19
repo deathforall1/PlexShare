@@ -29,7 +29,7 @@ namespace PlexShareDashboard.Dashboard.Server.Summary
         /// <returns>
         ///     List of strings representing clean chat messages
         /// </returns>
-        List<(string, bool)> CleanChat(List<(string, bool)> discussionChat);
+        List<(string, bool)> CleanChat(List<string> discussionChat);
 
         /// <summary>
         ///     Returns the words from the sentence
@@ -51,7 +51,7 @@ namespace PlexShareDashboard.Dashboard.Server.Summary
         /// <returns>
         ///     Map from words to their frequency of occurence
         /// </returns>
-        Dictionary<string, int> CountWords(List<(string, bool)> discussionChat);
+        Dictionary<string, int> CountWords(List<string> discussionChat);
 
         /// <summary>
         ///     Sorts all words that occur more than once by count descending
@@ -87,7 +87,7 @@ namespace PlexShareDashboard.Dashboard.Server.Summary
         /// <returns>
         ///     Map from Chat Sentences to their scores
         /// </returns>
-        Dictionary<string, int> ScoreSentences(List<(string, bool)> cleanedDiscussionChat, Dictionary<string, int> wordScores);
+        Dictionary<string, int> ScoreSentences(List<string> cleanedDiscussionChat, Dictionary<string, int> wordScores);
 
         /// <summary>
         ///     Returns only the top XX% of sentences specified by percentToKeep
@@ -118,7 +118,7 @@ namespace PlexShareDashboard.Dashboard.Server.Summary
         /// <returns>
         ///     Returns the summary of original messages
         /// </returns>
-        string BuildSummary(List<(string, bool)> cleanedDiscussionChat, string[] finalSentences, List<(string, bool)> discussionChat);
+        string BuildSummary(List<string> cleanedDiscussionChat, string[] finalSentences, List<string> discussionChat);
 
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace PlexShareDashboard.Dashboard.Server.Summary
         /// <returns>
         ///     Returns a string representing the sentiment score of the chat discussion
         /// </returns>
-        string BuildSentimentScore(List<string> cleanedDiscussionChat)
+        string BuildSentimentScore(List<string> cleanedDiscussionChat);
 
         /// <summary>
         ///     Gemerate summary from chats
@@ -141,7 +141,7 @@ namespace PlexShareDashboard.Dashboard.Server.Summary
         /// <returns>
         ///     Summary of chat messages
         /// </returns>
-        string Summarize(List<(string, bool)> discussionChat);
+        string Summarize(List<string> discussionChat);
 
     }
 }
